@@ -10,7 +10,7 @@ then invoking anywhere by
 `expression.calc();`
 
 ## Dev and Test
-> ***Not going to continue developing this repo because of Salesforce's poor performance of dynamic syntax and static functions. Specified as below.***
+> Not going to continue developing this repo because of Salesforce's poor performance of dynamic syntax and static functions. Specified as below.
 ### Performance Test
 #### 1) Static Syntax VS Dynamic Syntax
 Static syntax is more than 7 times faster than dynamic syntax. Please use below Code snipet to verify this by yourself.
