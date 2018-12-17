@@ -75,8 +75,8 @@ public class Eq {
 ```
 > If you still want to know how to use this repo or you want to see performance test result for this repo, please check here:
 [ExpressTreePerformanceTest](https://github.com/donttrickrick/ApexExpressionTree/blob/master/force-app/main/default/classes/ExpTreePerformanceTest.cls)
-## **Takeaway**
-1) Dynamic syntax badly impacts performance. Do not use dynamic syntax. 
+### Takeaway
+#### 1) Dynamic syntax badly impacts performance. Do not use dynamic syntax. 
 eg. sobject.get(), sobject.getSObject(), sobject.getSObjects()
-2) Even static function impact performance. Do not wrap simple logic in any functions.
+#### 2) Even static function impact performance. Do not wrap simple logic in any functions.
 In real scenario we don't invoke 10000 functions in one single transaction. But it is still possible if we wrap simple logic.
