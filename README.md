@@ -3,10 +3,10 @@
 This repo is built to support boolean lambda expression for SObject.
 
 So, instead of directly running plain code
-`a == 'str' && b != null`
-Lambda expression go first with building expression
+`a == 'str' && b != null`, 
+Lambda expression go first with building expression 
 `expression = Bool.and(Bool.eq('a', 'str'), Bool.notEq('b', 'null'))`
-then invoking anywhere by
+then invoking anywhere by 
 `expression.calc();`
 
 ## Dev and Test
@@ -19,9 +19,10 @@ Code snipet FYI.
 // Static Syntax
 Account acc = new Account();
 acc.Name = 'Goodman';
+Boolean isEq = null;
 Datetime startTime = Datetime.now();
 for(Integer i =  0; i <  10000; i++) {
-	c = acc.Name == 'Good';
+    isEq = acc.Name == 'Good';
 }
 Datetime endTime = Datetime.now();
 System.debug('***Static Time: '  + (endTime.millisecond() - startTime.millisecond()));
@@ -29,7 +30,7 @@ System.debug('***Static Time: '  + (endTime.millisecond() - startTime.millisecon
 // Dynamic Syntax
 startTime = Datetime.now();
 for(Integer i =  0; i <  10000; i++) {
-	c = acc.get('Name') == 'Good';
+    isEq = acc.get('Name') == 'Good';
 }
 endTime = Datetime.now();
 System.debug('***Dynamic Time: '  + (endTime.millisecond() - startTime.millisecond()));
@@ -43,7 +44,7 @@ acc.Name = 'Goodman';
 Boolean isEq = null;
 Datetime startTime = Datetime.now();
 for(Integer i =  0; i <  10000; i++) {
-	isEq = acc.Name == 'Good';
+    isEq = acc.Name == 'Good';
 }
 Datetime endTime = Datetime.now();
 System.debug('***Plain Code Time: '  + (endTime.millisecond() - startTime.millisecond()));
@@ -51,26 +52,26 @@ System.debug('***Plain Code Time: '  + (endTime.millisecond() - startTime.millis
 // Static Function
 startTime = Datetime.now();
 for(Integer i =  0; i <  10000; i++) {
-	isEq = eq(acc.Name, 'Good');
+    isEq = eq(acc.Name, 'Good');
 }
 endTime = Datetime.now();
 System.debug('***Static Function Time: '  + (endTime.millisecond() - startTime.millisecond()));
 public static Boolean eq(Object a, Object b) {
-	return a == b;
+    return a == b;
 }
 
 // Function in Class
 startTime = Datetime.now();
 Eq eqFunc = new Eq();
 for(Integer i =  0; i <  10000; i++) {
-	isEq = eqFunc.calc(acc.Name, 'Good'); 
+    isEq = eqFunc.calc(acc.Name, 'Good'); 
 }
 endTime = Datetime.now();
 System.debug('***Function in Class Time: '  + (endTime.millisecond() - startTime.millisecond()));
 public class Eq {
-	public Boolean calc(Object a, Object b) {
-		return a == b;
-	}
+    public Boolean calc(Object a, Object b) {
+        return a == b;
+    }
 }
 ```
 > If you still want to know how to use this repo or you want to see performance test result for this repo, please check here:
