@@ -20,41 +20,41 @@ Account acc = new Account();
 acc.Name = 'Goodman';
 Boolean isEq = null;
 Datetime startTime = Datetime.now();
-for(Integer i =  0; i <  10000; i++) {
+for(Integer i =  0; i < 3000; i++) {
     isEq = acc.Name == 'Good';
 }
 Datetime endTime = Datetime.now();
-System.debug('***Static Time: '  + (endTime.millisecond() - startTime.millisecond())); // 50ms
+System.debug('***Static Time: '  + (endTime.millisecond() - startTime.millisecond())); // 13ms
 
 // Dynamic Syntax
 startTime = Datetime.now();
-for(Integer i =  0; i <  10000; i++) {
+for(Integer i =  0; i < 3000; i++) {
     isEq = acc.get('Name') == 'Good';
 }
 endTime = Datetime.now();
-System.debug('***Dynamic Time: '  + (endTime.millisecond() - startTime.millisecond())); // 481ms
+System.debug('***Dynamic Time: '  + (endTime.millisecond() - startTime.millisecond())); // 73ms
 ```
 #### 2) Plain Code VS Static Function & Function in Class
-Plain code is 6 to 10 times faster than static function. Static function is the same with functions in class.
+Plain code is 6 to 10 times faster than static function. Static function is slightly faster than functions in class.
 ```Java
 // Plain Code
 Account acc = new Account();
 acc.Name = 'Goodman';
 Boolean isEq = null;
 Datetime startTime = Datetime.now();
-for(Integer i =  0; i <  10000; i++) {
+for(Integer i =  0; i < 3000; i++) {
     isEq = acc.Name == 'Good';
 }
 Datetime endTime = Datetime.now();
-System.debug('***Plain Code Time: '  + (endTime.millisecond() - startTime.millisecond())); // 41ms
+System.debug('***Plain Code Time: '  + (endTime.millisecond() - startTime.millisecond())); // 12ms
 
 // Static Function
 startTime = Datetime.now();
-for(Integer i =  0; i <  10000; i++) {
+for(Integer i =  0; i < 3000; i++) {
     isEq = eq(acc.Name, 'Good');
 }
 endTime = Datetime.now();
-System.debug('***Static Function Time: '  + (endTime.millisecond() - startTime.millisecond())); // 266ms
+System.debug('***Static Function Time: '  + (endTime.millisecond() - startTime.millisecond())); // 108ms
 public static Boolean eq(Object a, Object b) {
     return a == b;
 }
@@ -62,11 +62,11 @@ public static Boolean eq(Object a, Object b) {
 // Function in Class
 startTime = Datetime.now();
 Eq eqFunc = new Eq();
-for(Integer i =  0; i <  10000; i++) {
+for(Integer i =  0; i < 3000; i++) {
     isEq = eqFunc.calc(acc.Name, 'Good'); 
 }
 endTime = Datetime.now();
-System.debug('***Function in Class Time: '  + (endTime.millisecond() - startTime.millisecond())); // 258ms
+System.debug('***Function in Class Time: '  + (endTime.millisecond() - startTime.millisecond())); // 122ms
 public class Eq {
     public Boolean calc(Object a, Object b) {
         return a == b;
