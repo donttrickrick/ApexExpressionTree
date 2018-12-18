@@ -81,4 +81,4 @@ SYSTEM_MODE_ENTER and SYSTEM_MODE_EXIT occur when code jump between with sharing
 #### 1) Dynamic syntax badly impacts performance. Do not use dynamic syntax. eg. sobject.get(), sobject.getSObject(), sobject.getSObjects()
 #### 2) Even static function impact performance. Do not wrap simple logic in any functions.
 In real scenario we don't invoke 10000 functions in one single transaction. But it is still possible if we wrap simple logic.
-#### 3) No not use With Sharing or Whithout Sharing for utility classes. Adding sharing means it is not to be invoked by any other classes. Only add With/Without Sharing to TOPMOST classes. eg. controller, triggerHandler, invokableFunction etc.
+#### 3) Do not use With Sharing or Whithout Sharing for utility classes. Adding sharing means it is not to be invoked by any other classes. Only add With/Without Sharing to TOPMOST classes. eg. controller, triggerHandler, invokableFunction etc.
