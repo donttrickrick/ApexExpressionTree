@@ -10,7 +10,7 @@ then invoking anywhere by
 `expression.calc();`
 
 ## Dev and Test
-> Not going to continue developing this repo because of Salesforce's poor performance of dynamic syntax and static functions. Specified as below.
+> Bool expression part is done. But not going to continue developing this repo because of Salesforce's poor performance of dynamic syntax and static functions. Specified as below.
 ### Performance Test
 #### 1) Static Syntax VS Dynamic Syntax
 Static syntax is more than 7 times faster than dynamic syntax. Please use below Code snipet to verify this by yourself.
@@ -73,10 +73,12 @@ public class Eq {
     }
 }
 ```
+#### 3) With Sharing & Without Sharing
+SYSTEM_MODE_ENTER and SYSTEM_MODE_EXIT occur when code jump between with sharing and without sharing class. It significanty impact performance, if this happens in loop. 
 > If you still want to know how to use this repo or you want to see performance test result for this repo, please check here:
 [ExpressTreePerformanceTest](https://github.com/donttrickrick/ApexExpressionTree/blob/master/force-app/main/default/classes/ExpTreePerformanceTest.cls)
 ### Takeaway
-#### 1) Dynamic syntax badly impacts performance. Do not use dynamic syntax. 
-eg. sobject.get(), sobject.getSObject(), sobject.getSObjects()
+#### 1) Dynamic syntax badly impacts performance. Do not use dynamic syntax. eg. sobject.get(), sobject.getSObject(), sobject.getSObjects()
 #### 2) Even static function impact performance. Do not wrap simple logic in any functions.
 In real scenario we don't invoke 10000 functions in one single transaction. But it is still possible if we wrap simple logic.
+#### 3) No not use With Sharing or Whithout Sharing for utility classes. Adding sharing means it is not to be invoked by any other classes. Only add With/Without Sharing to TOPMOST classes. eg. controller, triggerHandler, invokableFunction etc.
