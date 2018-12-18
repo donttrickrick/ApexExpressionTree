@@ -24,7 +24,7 @@ for(Integer i =  0; i < 3000; i++) {
     isEq = acc.Name == 'Good';
 }
 Datetime endTime = Datetime.now();
-System.debug('***Static Time: '  + (endTime.millisecond() - startTime.millisecond())); // 13ms
+System.debug('***Static Time: '  + (endTime.getTime() - startTime.getTime())); // 13ms
 
 // Dynamic Syntax
 startTime = Datetime.now();
@@ -32,7 +32,7 @@ for(Integer i =  0; i < 3000; i++) {
     isEq = acc.get('Name') == 'Good';
 }
 endTime = Datetime.now();
-System.debug('***Dynamic Time: '  + (endTime.millisecond() - startTime.millisecond())); // 73ms
+System.debug('***Dynamic Time: '  + (endTime.getTime() - startTime.getTime())); // 73ms
 ```
 #### 2) Plain Code VS Static Function & Function in Class
 Plain code is 6 to 10 times faster than static function. Static function is slightly faster than functions in class.
@@ -46,7 +46,7 @@ for(Integer i =  0; i < 3000; i++) {
     isEq = acc.Name == 'Good';
 }
 Datetime endTime = Datetime.now();
-System.debug('***Plain Code Time: '  + (endTime.millisecond() - startTime.millisecond())); // 12ms
+System.debug('***Plain Code Time: '  + (endTime.getTime() - startTime.getTime())); // 12ms
 
 // Static Function
 startTime = Datetime.now();
@@ -54,7 +54,7 @@ for(Integer i =  0; i < 3000; i++) {
     isEq = eq(acc.Name, 'Good');
 }
 endTime = Datetime.now();
-System.debug('***Static Function Time: '  + (endTime.millisecond() - startTime.millisecond())); // 108ms
+System.debug('***Static Function Time: '  + (endTime.getTime() - startTime.getTime())); // 108ms
 public static Boolean eq(Object a, Object b) {
     return a == b;
 }
@@ -66,7 +66,7 @@ for(Integer i =  0; i < 3000; i++) {
     isEq = eqFunc.calc(acc.Name, 'Good'); 
 }
 endTime = Datetime.now();
-System.debug('***Function in Class Time: '  + (endTime.millisecond() - startTime.millisecond())); // 122ms
+System.debug('***Function in Class Time: '  + (endTime.getTime() - startTime.getTime())); // 122ms
 public class Eq {
     public Boolean calc(Object a, Object b) {
         return a == b;

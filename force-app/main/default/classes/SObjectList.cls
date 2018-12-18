@@ -506,10 +506,11 @@ public class SObjectList {
         return whereList;
     }
 
-    public static List<SObject> whereEq(List<SObject> l, Bool.Expression expression) {
-        List<SObject> whereList = new List<SObject>();
+    
+    public SObjectList whereEq(SObjectField.Getable field) {
+        SObjectList whereList = new SObjectList();
         for(SObject sObj : l) {
-            if(expression.calc(sObj)) {
+            if((Boolean)field.get(sObj)) {
                 whereList.add(sObj);
             }
         }
